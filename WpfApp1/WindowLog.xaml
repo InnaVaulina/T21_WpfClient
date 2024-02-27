@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp1.WindowLog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Вход пользователя" Height="200" Width="200">
+    <StackPanel Margin="10,10,10,10">
+        <TextBlock>Логин:</TextBlock>
+        <TextBox Text="{Binding Path=Entry.LoginProp}"/>
+        <TextBlock>Пароль:</TextBlock>
+        <TextBox Text="{Binding Path=Entry.PassWord}"/>
+        <Button Content="Войти" Margin="10,15,10,10" Command="{Binding LogUser}"/>
+
+
+    </StackPanel>
+</Window>

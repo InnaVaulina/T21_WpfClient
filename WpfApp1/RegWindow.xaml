@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApp1.RegWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="RegWindow" Height="200" Width="400">
+
+    <StackPanel>
+        <TextBlock>Регистрация пользователя:</TextBlock>
+        <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+            <Grid  x:Name="addNote" Margin="5,5,5,5" DataContext="{Binding Register}">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="20" Height="20"/>
+                    <RowDefinition MinHeight="20" Height="20"/>
+                    <RowDefinition MinHeight="20" Height="20"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Логин"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Пароль"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Подтверждение пароля"/>
+
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding LoginProp}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Password}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ConfirmPassword}"/>
+
+            </Grid>
+        </Border>
+        <Button Margin="10,10,10,10" Content="Добавить" Command="{Binding RegisterNewUser}"/>
+    </StackPanel>
+</Window>

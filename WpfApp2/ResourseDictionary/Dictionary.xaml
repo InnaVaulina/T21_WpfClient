@@ -1,0 +1,333 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="RoleAnonymousMenu">
+        <Menu>
+            <MenuItem Header="Вход" Command="{Binding OpenLogWindow}"/>
+            <MenuItem Header="Регистрация" Command="{Binding OpenRegWindow}"/>
+        </Menu>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RoleAddMakerMenu">
+        <Menu>
+            <MenuItem Header="Выход" Command="{Binding ExecuteLogOut}"/>
+        </Menu>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RoleAdminMenu">
+        <Menu>
+            <MenuItem Header="Выход" Command="{Binding ExecuteLogOut}"/>
+            <MenuItem Header="Окно администратора" Command="{Binding OpenAdminWindow}"/>
+        </Menu>
+    </DataTemplate>
+
+
+
+
+
+
+    <DataTemplate x:Key="RoleAnonymousBookMenu">
+        <Menu>
+            <MenuItem Header="Просмотр"/>
+        </Menu>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RoleAddMakerBookMenu">
+        <Menu>
+            <MenuItem Header="Просмотр" Command="{Binding ShowNoteTemplateShow}"/>
+            <MenuItem Header="Добавить" Command="{Binding AddNoteTemplateShow}"/>
+        </Menu>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RoleAdminBookMenu">
+        <Menu>
+            <MenuItem Header="Просмотр" Command="{Binding ShowNoteTemplateShow}"/>
+            <MenuItem Header="Добавить" Command="{Binding AddNoteTemplateShow}"/>
+            <MenuItem Header="Изменить" Command="{Binding ChangeNoteTemplateShow}"/>
+            <MenuItem Header="Удалить" Command="{Binding DeleteNoteTemplateShow}"/>
+        </Menu>
+    </DataTemplate>
+
+
+
+
+
+    <DataTemplate x:Key="noteShowingView">
+        <StackPanel>
+            <TextBlock>Просмотр записи:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid Margin="5,5,5,5" DataContext="{Binding Note}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Отчество:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Телефон:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Адрес:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="7" Grid.ColumnSpan="2" Text="Дополнительная информация:" TextWrapping="Wrap"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FamilyName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Name}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PatronymicName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Tel}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding Address}" FontWeight="Bold" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="{Binding Description}" FontWeight="Bold" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="noteAddingView">
+        <StackPanel>
+            <TextBlock>Добавление записи:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid  x:Name="addNote" Margin="5,5,5,5" DataContext="{Binding NewNote}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Отчество:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Телефон:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Адрес:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="7" Grid.ColumnSpan="2" Text="Дополнительная информация:" TextWrapping="Wrap"/>
+
+
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding FamilyName}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Name}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PatronymicName}"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Tel}"/>
+                    <TextBox Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding Address}" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="8" Grid.ColumnSpan="2" Text="{Binding Description}" TextWrapping="Wrap"/>
+
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Добавить запись" Command="{Binding AddNote}"/>
+        </StackPanel>
+    </DataTemplate>
+
+
+
+
+    <DataTemplate x:Key="noteChangingView">
+        <StackPanel>
+            <TextBlock>Изменение записи:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid Margin="5,5,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Id:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Фамилия:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Имя:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Отчество:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Телефон:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Адрес:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="9" Grid.ColumnSpan="2" Text="Дополнительная информация:" TextWrapping="Wrap"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1">Старые данные</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Note.Id}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Note.FamilyName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=Note.Name}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=Note.PatronymicName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Path=Note.Tel}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="7" Grid.ColumnSpan="3" Text="{Binding Path=Note.Address}" FontWeight="Bold" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="10" Grid.ColumnSpan="3" Text="{Binding Path=Note.Description}" FontWeight="Bold" TextWrapping="Wrap"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="3">Новые данные</TextBlock>
+                    <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=NewNote.FamilyName}"/>
+                    <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Path=NewNote.Name}"/>
+                    <TextBox Grid.Row="4" Grid.Column="3" Text="{Binding Path=NewNote.PatronymicName}"/>
+                    <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding Path=NewNote.Tel}"/>
+                    <TextBox Grid.Row="8" Grid.ColumnSpan="3" Text="{Binding Path=NewNote.Address}" TextWrapping="Wrap"/>
+                    <TextBox Grid.Row="11" Grid.ColumnSpan="3" Text="{Binding Path=NewNote.Description}" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Скопировать" Command="{Binding CopyNoteToNewNote}"/>
+            <Button Margin="10,10,10,10" Content="Изменить запись" Command="{Binding ChangeNote}"/>
+        </StackPanel>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="noteDeletingView">
+        <StackPanel>
+            <TextBlock>Удаление записи:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid Margin="5,5,5,5" DataContext="{Binding Note}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Отчество:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Телефон:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Адрес:" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="7" Grid.ColumnSpan="2" Text="Дополнительная информация:" TextWrapping="Wrap"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FamilyName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Name}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PatronymicName}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Tel}" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding Address}" FontWeight="Bold" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="8" Grid.ColumnSpan="2" Text="{Binding Description}" FontWeight="Bold" TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Удалить запись" Command="{Binding DeleteNote}"/>
+        </StackPanel>
+    </DataTemplate>
+
+
+
+    <DataTemplate x:Key="userAddingView">
+        <StackPanel>
+            <TextBlock>Регистрация пользователя:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid  x:Name="addNote" Margin="5,5,5,5" DataContext="{Binding Register}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Логин"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Пароль"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Подтверждение пароля"/>
+
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding LoginProp}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Password}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ConfirmPassword}"/>
+
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Добавить" Command="{Binding RegUser}"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="userDeletingView">
+        <StackPanel>
+            <TextBlock>Удаление пользователя:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid  x:Name="addNote" Margin="5,5,5,5" DataContext="{Binding UserInWork}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Имя пользователя:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Идентификатор:"/>
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding UserName}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"/>
+
+
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Удалить" Command="{Binding DeleteUser}"/>
+        </StackPanel>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="userRoleChangingView">
+        <StackPanel>
+            <TextBlock>Смена роли пользователя:</TextBlock>
+            <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                <Grid  x:Name="addNote" Margin="5,5,5,5" DataContext="{Binding UserInWork}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                        <RowDefinition MinHeight="20" Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Идентификатор:"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя пользователя:"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Роль пользователя:"/>
+
+
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding UserName}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding UserRole}"/>
+
+
+                </Grid>
+            </Border>
+            <Button Margin="10,10,10,10" Content="Изменить роль" Command="{Binding ChangeUserRole}"/>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

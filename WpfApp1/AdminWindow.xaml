@@ -1,0 +1,71 @@
+﻿<Window x:Class="WpfApp1.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:ls ="clr-namespace:WpfApp1.AVM.Roles.Selector"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ls:TemplateSelectorForAdminView x:Key="functionAdminVewSelector"
+                        ShowUserAddView ="{StaticResource userAddingView}"
+                        ShowUserDeleteView ="{StaticResource userDeletingView}"
+                        ShowUserChangeRoleView ="{StaticResource userRoleChangingView}"/>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Обновить список" Command="{Binding PullUsersList}"/>
+            <MenuItem Header="Добавить пользователя" Command="{Binding RegUserTemplateShow}"/>
+            <MenuItem Header="Изменить роль пользователя" Command="{Binding ChangeUserRoleTemplateShow}"/>
+            <MenuItem Header="Удалить пользователя" Command="{Binding DeleteUserTemplateShow}"/>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <GridSplitter Grid.Column="1" ShowsPreview="False" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="5"/>
+
+            <StackPanel Grid.Column="0">
+                <ScrollViewer>
+                    <ListBox  x:Name="userList" ItemsSource="{Binding Path=AuthorizedUser.UserInWorkList}" SelectionChanged="userList_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" Margin="5" BorderThickness="1" CornerRadius="10">
+                                    <StackPanel Margin="5" Orientation="Vertical">
+                                        <TextBlock Text="{Binding Id}"  FontSize="10"/>
+
+                                        <TextBlock FontSize="14">
+                                            <Run Text="Имя пользователя:"/>
+                                            <Run Text="{Binding UserName}"/>        
+                                        </TextBlock>
+                                        <TextBlock FontSize="14">
+                                            <Run Text="Роль пользователя:"/>
+                                            <Run Text="{Binding UserRole}"/>            
+                                        </TextBlock>
+
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <ContentControl x:Name="bookFunctionsView"
+        Content="{Binding SpecialFunction}"
+        ContentTemplateSelector="{StaticResource functionAdminVewSelector}"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
